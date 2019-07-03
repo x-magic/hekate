@@ -733,14 +733,6 @@ static int _restore_emmc_part(char *sd_path, sdmmc_storage_t *storage, emmc_part
 
 		return 0;
 	}
-	else if (!use_multipart && (((u32)((u64)f_size(&fp) >> (u64)9)) != totalSectors)) // Check total restore size vs emmc size.
-	{
-		gfx_con.fntsz = 16;
-		EPRINTF("Size of the SD Card backup does not match,\neMMC's selected part size.\n");
-		f_close(&fp);
-
-		return 0;
-	}
 	else
 	{
 		fileSize = (u64)f_size(&fp);
